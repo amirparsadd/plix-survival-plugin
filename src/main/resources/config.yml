@@ -1,0 +1,4 @@
+server-id: "Example"
+max-players: 5
+restart-delay: 40000
+pvp: false

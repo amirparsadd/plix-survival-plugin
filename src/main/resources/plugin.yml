@@ -1,0 +1,10 @@
+name: Survival
+version: '${project.version}'
+main: com.amirparsa.survival.Survival
+api-version: '1.16'
+commands:
+  sharelocation:
+    usage: /<command> PlayerName
+    description: Share Your Location With The Specified Player
+    permission: iransky.skywarrior
+    aliases: [ sl ]
