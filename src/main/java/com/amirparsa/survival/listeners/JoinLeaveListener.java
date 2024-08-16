@@ -12,6 +12,7 @@ public class JoinLeaveListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
         e.setJoinMessage(e.getPlayer().getName() + ChatColor.AQUA + " Joined " + ChatColor.DARK_AQUA + Survival.getInstance().SERVER_NAME);
+        // Get Rid Of Any Older Messages Persisting From Other Servers
         for(int i = 0; i < 20; i++){
             e.getPlayer().sendMessage("   ");
         }

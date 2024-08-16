@@ -56,7 +56,6 @@ public final class Survival extends JavaPlugin implements Listener {
         }
 
         getServer().getLogger().severe("Failed To Setup ShareLocation Command!");
-        getServer().shutdown();
     }
 
     private void runAdsTask(){
@@ -80,7 +79,8 @@ public final class Survival extends JavaPlugin implements Listener {
         new BukkitRunnable(){
             @Override
             public void run() {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "restart");
+                // The Current System Automatically Restarts When The Server Stops
+                Bukkit.shutdown();
             }
         }.runTaskLater(this, SERVER_RESTART_SECONDS * 20L);
     }
