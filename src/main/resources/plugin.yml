@@ -6,5 +6,4 @@ commands:
   sharelocation:
     usage: /<command> PlayerName
     description: Share Your Location With The Specified Player
-    permission: iransky.skywarrior
     aliases: [ sl ]
