@@ -1,4 +1,6 @@
 server-id: "Example"
+server-desc: "No Description Provided"
+enable-ads: true
 max-players: 5
 restart-delay: 40000
 pvp: false
