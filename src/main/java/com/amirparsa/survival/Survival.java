@@ -63,6 +63,7 @@ public final class Survival extends JavaPlugin implements Listener {
             @Override
             public void run(){
                 getServer().broadcastMessage(ChatColor.GREEN + "This Server Is Powered By PlixSMP");
+                getServer().broadcastMessage(ChatColor.YELLOW + "Telegram: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://t.me/plixsmp");
                 getServer().broadcastMessage(ChatColor.YELLOW + "Rubika: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://rubika.ir/plixsmp");
                 getServer().broadcastMessage(ChatColor.YELLOW + "Discord: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://discord.gg/D9F7QsMZpS");
             }
