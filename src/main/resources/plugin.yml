@@ -3,6 +3,9 @@ version: '${project.version}'
 main: com.amirparsa.survival.Survival
 api-version: '1.16'
 commands:
+  ping:
+    usage: /<command>
+    description: See Your Ping
   sharelocation:
     usage: /<command> PlayerName
     description: Share Your Location With The Specified Player

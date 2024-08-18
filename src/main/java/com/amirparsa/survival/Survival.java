@@ -1,5 +1,6 @@
 package com.amirparsa.survival;
 
+import com.amirparsa.survival.commands.PingCommand;
 import com.amirparsa.survival.commands.ShareLocationCommand;
 import com.amirparsa.survival.listeners.DeathListener;
 import com.amirparsa.survival.listeners.JoinLeaveListener;
@@ -11,6 +12,8 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.Objects;
 
 public final class Survival extends JavaPlugin implements Listener {
 
@@ -49,13 +52,10 @@ public final class Survival extends JavaPlugin implements Listener {
 
     private void registerCommands(){
         PluginCommand sharelocationCommand = getCommand("sharelocation");
+        PluginCommand pingCommand = getCommand("ping");
 
-        if (sharelocationCommand != null) {
-            sharelocationCommand.setExecutor(new ShareLocationCommand());
-            return;
-        }
-
-        getServer().getLogger().severe("Failed To Setup ShareLocation Command!");
+        Objects.requireNonNull(sharelocationCommand).setExecutor(new ShareLocationCommand());
+        Objects.requireNonNull(pingCommand).setExecutor(new PingCommand());
     }
 
     private void runAdsTask(){
@@ -76,6 +76,7 @@ public final class Survival extends JavaPlugin implements Listener {
                 getServer().broadcastMessage("Server Restarting In 30 Seconds!");
             }
         }.runTaskLater(this, (SERVER_RESTART_SECONDS - 30) * 20L);
+
         new BukkitRunnable(){
             @Override
             public void run() {
