@@ -67,7 +67,7 @@ public final class Survival extends JavaPlugin implements Listener {
                 getServer().broadcastMessage(ChatColor.YELLOW + "Rubika: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://rubika.ir/plixsmp");
                 getServer().broadcastMessage(ChatColor.YELLOW + "Discord: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://discord.gg/D9F7QsMZpS");
             }
-        }.runTaskTimer(this, 10, 500 * 20L);
+        }.runTaskTimer(this, 10, 1200 * 20L);
     }
 
     private void runRestartTask(){
