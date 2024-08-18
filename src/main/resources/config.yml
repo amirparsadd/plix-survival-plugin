@@ -1,6 +1,6 @@
-server-id: "Example"
+server-id: "No Name"
 server-desc: "No Description Provided"
 enable-ads: true
 max-players: 5
-restart-delay: 40000
+restart-delay: 30000
 pvp: false

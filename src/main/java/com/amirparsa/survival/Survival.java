@@ -17,30 +17,25 @@ import java.util.Objects;
 
 public final class Survival extends JavaPlugin implements Listener {
 
-    public final int MAX_PLAYERS = getConfig().getInt("max-players", 5);
-    public final String SERVER_NAME = getConfig().getString("server-id", "Unknown");
-    public final boolean PVP = getConfig().getBoolean("pvp", false);
-    public final boolean ADS = getConfig().getBoolean("enable-ads", true);
-
-    public final int SERVER_RESTART_SECONDS = getConfig().getInt("restart-delay", 40000);
-    public final String SERVER_DESC = getConfig().getString("server-desc", "Broken Config!");
-
     private static Survival plugin;
+    public Config config;
 
     @Override
     public void onEnable() {
         plugin = this;
-        saveDefaultConfig();
-        getServer().setMaxPlayers(MAX_PLAYERS);
+        setupConfig();
+        getServer().setMaxPlayers(config.MAX_PLAYERS);
 
         registerCommands();
         registerEvents();
         displayStartupMessage();
         runRestartTask();
+        runAdsTask();
+    }
 
-        if(ADS){
-            runAdsTask();
-        }
+    private void setupConfig(){
+        saveDefaultConfig();
+        config = new Config(getConfig());
     }
 
     private void registerEvents(){
@@ -62,6 +57,8 @@ public final class Survival extends JavaPlugin implements Listener {
         new BukkitRunnable(){
             @Override
             public void run(){
+                if(!config.ADS) return;
+
                 getServer().broadcastMessage(ChatColor.GREEN + "This Server Is Powered By PlixSMP");
                 getServer().broadcastMessage(ChatColor.YELLOW + "Telegram: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://t.me/plixsmp");
                 getServer().broadcastMessage(ChatColor.YELLOW + "Rubika: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://rubika.ir/plixsmp");
@@ -76,7 +73,7 @@ public final class Survival extends JavaPlugin implements Listener {
             public void run() {
                 getServer().broadcastMessage("Server Restarting In 30 Seconds!");
             }
-        }.runTaskLater(this, (SERVER_RESTART_SECONDS - 30) * 20L);
+        }.runTaskLater(this, (config.SERVER_RESTART_SECONDS - 30) * 20L);
 
         new BukkitRunnable(){
             @Override
@@ -84,12 +81,12 @@ public final class Survival extends JavaPlugin implements Listener {
                 // The Current System Automatically Restarts When The Server Stops
                 Bukkit.shutdown();
             }
-        }.runTaskLater(this, SERVER_RESTART_SECONDS * 20L);
+        }.runTaskLater(this, config.SERVER_RESTART_SECONDS * 20L);
     }
 
     private void displayStartupMessage(){
-        getLogger().info("Max Players:" + MAX_PLAYERS);
-        getLogger().info("Server Name:" + SERVER_NAME);
+        getLogger().info("Max Players:" + config.MAX_PLAYERS);
+        getLogger().info("Server Name:" + config.SERVER_NAME);
         getLogger().info("This Server Is Running " + getServer().getVersion());
     }
 

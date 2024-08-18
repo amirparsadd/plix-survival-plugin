@@ -14,7 +14,7 @@ public class PvpListener implements Listener {
         if(!(e.getEntity() instanceof Player)) return;
         if(!(e.getDamager() instanceof Player)) return;
 
-        if(!Survival.getInstance().PVP){
+        if(!Survival.getInstance().config.PVP){
             e.setCancelled(true);
             e.getDamager().sendMessage(ChatColor.RED + "PVP Is Disabled In Your Current SMP");
         }

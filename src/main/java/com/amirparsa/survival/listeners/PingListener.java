@@ -10,6 +10,6 @@ public class PingListener implements Listener {
 
     @EventHandler
     public void onPing(ServerListPingEvent e){
-        e.setMotd(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + Survival.getInstance().SERVER_NAME + ChatColor.RESET + ChatColor.GRAY + " Is Online!\n" + ChatColor.DARK_GRAY + Survival.getInstance().SERVER_DESC);
+        e.setMotd(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + Survival.getInstance().config.SERVER_NAME + ChatColor.RESET + ChatColor.GRAY + " Is Online!\n" + ChatColor.DARK_GRAY + Survival.getInstance().config.SERVER_DESC);
     }
 }
