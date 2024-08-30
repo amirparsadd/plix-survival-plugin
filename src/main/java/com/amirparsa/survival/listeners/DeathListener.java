@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class DeathListener implements Listener {
 
-    public String[] deathMessages = new String[]{
+    public final String[] deathMessages = new String[]{
             "Brutally Murdered",
             "Murdered",
             "Covered In Blood",
