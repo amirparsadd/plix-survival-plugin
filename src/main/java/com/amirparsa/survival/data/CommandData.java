@@ -4,7 +4,7 @@ public class CommandData {
     public String permission;
     public boolean enabled;
 
-    private CommandData() {}
+    public CommandData(){}
 
     public CommandData(String permission, boolean enabled) {
         this.permission = permission;

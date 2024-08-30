@@ -4,3 +4,11 @@ enable-ads: true
 max-players: 5
 restart-delay: 30000
 pvp: false
+
+commands:
+  sharelocation:
+    enabled: true
+    permission: ""
+  ping:
+    enabled: true
+    permission: ""
