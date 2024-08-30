@@ -5,6 +5,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Config {
 
@@ -25,14 +26,21 @@ public class Config {
         ADS = config.getBoolean("enable-ads", true);
         SERVER_RESTART_SECONDS = config.getInt("restart-delay", 40000);
         SERVER_DESC = config.getString("server-desc", "Broken Config!");
+    }
 
+    private void loadCommands(){
         ConfigurationSection commandsSection = config.getConfigurationSection("commands");
         assert commandsSection != null;
-        for(String key : commandsSection.getKeys(false)){
+        for(String key : commandsSection.getKeys(false).stream().toList()){
             ConfigurationSection command = commandsSection.getConfigurationSection(key);
             CommandData commandData = new CommandData();
 
-            if(command.getString("permission") != null) commandData.setPermission(command.getString("permission"));
+            assert command != null;
+            if(command.getString("permission") != null){
+                if(!Objects.requireNonNull(command.getString("permission")).isEmpty()){
+                    commandData.setPermission(command.getString("permission"));
+                }
+            }
             commandData.setEnabled(command.getBoolean("enabled"));
 
             COMMANDS.put(key, commandData);
@@ -42,6 +50,7 @@ public class Config {
     public Config(FileConfiguration serverConfig){
         config = serverConfig;
         loadConfigValues();
+        loadCommands();
     }
     public void reloadConfig(FileConfiguration reloadedConfig){
         config = reloadedConfig;

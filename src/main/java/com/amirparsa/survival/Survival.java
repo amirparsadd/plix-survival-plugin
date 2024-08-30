@@ -13,12 +13,21 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Objects;
 
 public final class Survival extends JavaPlugin implements Listener {
 
     private static Survival plugin;
     public Config config;
+
+    public static HashMap<String, BaseCommand> commandHandlers = new HashMap<>();
+
+    static {
+        commandHandlers.put("sharelocation", new ShareLocationCommand());
+        commandHandlers.put("ping", new PingCommand());
+    }
 
     @Override
     public void onEnable() {
@@ -35,6 +44,8 @@ public final class Survival extends JavaPlugin implements Listener {
 
     private void setupConfig(){
         saveDefaultConfig();
+        getConfig().options().copyDefaults(true);
+        saveConfig();
         config = new Config(getConfig());
     }
 
@@ -46,11 +57,9 @@ public final class Survival extends JavaPlugin implements Listener {
     }
 
     private void registerCommands(){
-        PluginCommand sharelocationCommand = getCommand("sharelocation");
-        PluginCommand pingCommand = getCommand("ping");
-
-        Objects.requireNonNull(sharelocationCommand).setExecutor(new ShareLocationCommand());
-        Objects.requireNonNull(pingCommand).setExecutor(new PingCommand());
+        for(String commandName : commandHandlers.keySet().stream().toList()){
+            Objects.requireNonNull(getCommand(commandName)).setExecutor(commandHandlers.get(commandName));
+        }
     }
 
     private void runAdsTask(){

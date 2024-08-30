@@ -1,17 +1,16 @@
 package com.amirparsa.survival.commands;
 
+import com.amirparsa.survival.BaseCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ShareLocationCommand implements CommandExecutor {
+public class ShareLocationCommand extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
+    public boolean handle(CommandSender commandSender, Command command, String s, String[] args) {
         if(commandSender instanceof Player p){
             if(args.length != 1){
                 p.sendMessage(ChatColor.RED + "Incorrect Arguments!");
