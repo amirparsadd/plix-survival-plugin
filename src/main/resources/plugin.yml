@@ -10,3 +10,9 @@ commands:
     usage: /<command> PlayerName
     description: Share Your Location With The Specified Player
     aliases: [ sl ]
+  craft:
+    usage: /<command>
+    description: Opens The Crafting Table
+  enchant:
+    usage: /<command>
+    description: Opens The Enchanting Table

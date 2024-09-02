@@ -12,3 +12,9 @@ commands:
   ping:
     enabled: true
     permission: ""
+  craft:
+    enabled: false
+    permission: ""
+  enchant:
+    enabled: false
+    permission: ""

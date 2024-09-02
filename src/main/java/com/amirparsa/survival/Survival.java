@@ -1,5 +1,7 @@
 package com.amirparsa.survival;
 
+import com.amirparsa.survival.commands.CraftCommand;
+import com.amirparsa.survival.commands.EnchantCommand;
 import com.amirparsa.survival.commands.PingCommand;
 import com.amirparsa.survival.commands.ShareLocationCommand;
 import com.amirparsa.survival.listeners.DeathListener;
@@ -8,12 +10,10 @@ import com.amirparsa.survival.listeners.PingListener;
 import com.amirparsa.survival.listeners.PvpListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.PluginCommand;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -27,6 +27,8 @@ public final class Survival extends JavaPlugin implements Listener {
     static {
         commandHandlers.put("sharelocation", new ShareLocationCommand());
         commandHandlers.put("ping", new PingCommand());
+        commandHandlers.put("craft", new CraftCommand());
+        commandHandlers.put("enchant", new EnchantCommand());
     }
 
     @Override
