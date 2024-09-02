@@ -16,6 +16,10 @@ public abstract class BaseCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
         CommandData commandData = Survival.getInstance().config.COMMANDS.get(command.getName());
 
+        if(commandData == null){
+            commandData = new CommandData(null, true);
+        }
+
         if(!commandData.isEnabled()){
             if(commandSender instanceof Player p){
                 p.sendMessage(commandDisabledMessage);
