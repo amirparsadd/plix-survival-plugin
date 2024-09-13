@@ -1,6 +1,6 @@
-package com.amirparsa.survival.commands;
+package com.amirparsa.survival.commands.storage;
 
-import com.amirparsa.survival.BaseCommand;
+import com.amirparsa.survival.commands.ConfigurableCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -8,7 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ShareLocationCommand extends BaseCommand {
+public class ShareLocationCommand extends ConfigurableCommand {
 
     public boolean handle(CommandSender commandSender, Command command, String s, String[] args) {
         if(commandSender instanceof Player p){

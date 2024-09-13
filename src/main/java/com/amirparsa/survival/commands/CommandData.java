@@ -1,4 +1,4 @@
-package com.amirparsa.survival.data;
+package com.amirparsa.survival.commands;
 
 public class CommandData {
     public String permission;

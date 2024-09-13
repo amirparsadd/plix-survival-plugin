@@ -1,16 +1,15 @@
-package com.amirparsa.survival;
+package com.amirparsa.survival.commands;
 
-import com.amirparsa.survival.data.CommandData;
+import com.amirparsa.survival.Survival;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public abstract class BaseCommand implements CommandExecutor {
+abstract public class ConfigurableCommand extends BaseCommand {
 
     private final String commandDisabledMessage = ChatColor.RED + "This command is disabled";
-    private final String lackingPermissionMessage = ChatColor.RED + "You are lacking the required permission!";
+    private final String lackingPermissionMessage = ChatColor.GRAY + "You are lacking the required permission!";
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
@@ -37,8 +36,6 @@ public abstract class BaseCommand implements CommandExecutor {
             }
         }
 
-        return handle(commandSender, command, label, args);
+        return super.onCommand(commandSender, command, label, args);
     }
-
-    public abstract boolean handle(CommandSender commandSender, Command command, String label, String[] args);
 }

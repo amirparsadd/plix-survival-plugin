@@ -2,9 +2,18 @@ server-id: "No Name"
 server-desc: "No Description Provided"
 enable-ads: true
 max-players: 5
-restart-delay: 30000
-pvp: false
 
+restart-warn-delay: 30
+restart-delay: 30000
+
+# PVP Related
+pvp: true
+custom-pvp-messages: true
+
+# Custom Util Features
+custom-motd: true
+
+# Configurable Commands
 commands:
   sharelocation:
     enabled: true

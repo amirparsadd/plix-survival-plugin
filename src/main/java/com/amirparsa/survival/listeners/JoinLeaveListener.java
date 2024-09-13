@@ -17,7 +17,7 @@ public class JoinLeaveListener implements Listener {
             e.getPlayer().sendMessage("   ");
         }
         e.getPlayer().sendMessage(ChatColor.GRAY + "Welcome To " + ChatColor.DARK_AQUA + Survival.getInstance().config.SERVER_NAME);
-        e.getPlayer().sendMessage(ChatColor.GRAY + "PVP Is " + Survival.getInstance().getColor(Survival.getInstance().config.PVP) + Survival.getInstance().toString(Survival.getInstance().config.PVP));
+        e.getPlayer().sendMessage(ChatColor.GRAY + "PVP Is " + Survival.getInstance().convertBooleanToChatColor(Survival.getInstance().config.PVP) + Survival.getInstance().convertBooleanToString(Survival.getInstance().config.PVP));
         e.getPlayer().sendMessage(ChatColor.DARK_GRAY + "Running " + Bukkit.getServer().getVersion());
     }
 

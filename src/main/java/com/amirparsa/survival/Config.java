@@ -1,6 +1,6 @@
 package com.amirparsa.survival;
 
-import com.amirparsa.survival.data.CommandData;
+import com.amirparsa.survival.commands.CommandData;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -16,16 +16,22 @@ public class Config {
     public boolean ADS;
     public int SERVER_RESTART_SECONDS;
     public String SERVER_DESC;
+    public boolean CUSTOM_PVP_MESSAGES;
+    public boolean CUSTOM_MOTD;
+    public int SERVER_RESTART_ALERT_SECONDS;
 
     public HashMap<String, CommandData> COMMANDS = new HashMap<>();
 
     public void loadConfigValues(){
         MAX_PLAYERS = config.getInt("max-players", 5);
         SERVER_NAME = config.getString("server-id", "Unknown");
-        PVP = config.getBoolean("pvp", false);
+        PVP = config.getBoolean("pvp", true);
+        CUSTOM_PVP_MESSAGES = config.getBoolean("custom-pvp-messages", true);
         ADS = config.getBoolean("enable-ads", true);
-        SERVER_RESTART_SECONDS = config.getInt("restart-delay", 40000);
-        SERVER_DESC = config.getString("server-desc", "Broken Config!");
+        SERVER_RESTART_SECONDS = config.getInt("restart-delay", 30000);
+        SERVER_RESTART_ALERT_SECONDS = config.getInt("restart-warn-delay", 30);
+        SERVER_DESC = config.getString("server-desc", "Unknown");
+        CUSTOM_MOTD = config.getBoolean("custom-motd", true);
     }
 
     private void loadCommands(){

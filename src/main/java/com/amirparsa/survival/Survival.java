@@ -1,9 +1,10 @@
 package com.amirparsa.survival;
 
-import com.amirparsa.survival.commands.CraftCommand;
-import com.amirparsa.survival.commands.EnchantCommand;
-import com.amirparsa.survival.commands.PingCommand;
-import com.amirparsa.survival.commands.ShareLocationCommand;
+import com.amirparsa.survival.commands.BaseCommand;
+import com.amirparsa.survival.commands.storage.CraftCommand;
+import com.amirparsa.survival.commands.storage.EnchantCommand;
+import com.amirparsa.survival.commands.storage.PingCommand;
+import com.amirparsa.survival.commands.storage.ShareLocationCommand;
 import com.amirparsa.survival.listeners.DeathListener;
 import com.amirparsa.survival.listeners.JoinLeaveListener;
 import com.amirparsa.survival.listeners.PingListener;
@@ -72,8 +73,9 @@ public final class Survival extends JavaPlugin implements Listener {
 
                 getServer().broadcastMessage(ChatColor.GREEN + "This Server Is Powered By PlixSMP");
                 getServer().broadcastMessage(ChatColor.YELLOW + "Telegram: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://t.me/plixsmp");
-                getServer().broadcastMessage(ChatColor.YELLOW + "Rubika: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://rubika.ir/plixsmp");
-                getServer().broadcastMessage(ChatColor.YELLOW + "Discord: " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://discord.gg/D9F7QsMZpS");
+                getServer().broadcastMessage(ChatColor.YELLOW + "Rubika:   " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://rubika.ir/plixsmp");
+                getServer().broadcastMessage(ChatColor.YELLOW + "Discord:  " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://discord.gg/D9F7QsMZpS");
+                getServer().broadcastMessage(ChatColor.YELLOW + "Eitaa:    " + ChatColor.BLUE + ChatColor.UNDERLINE + "https://eitaa.com/plixsmp");
             }
         }.runTaskTimer(this, 10, 1200 * 20L);
     }
@@ -84,12 +86,11 @@ public final class Survival extends JavaPlugin implements Listener {
             public void run() {
                 getServer().broadcastMessage("Server Restarting In 30 Seconds!");
             }
-        }.runTaskLater(this, (config.SERVER_RESTART_SECONDS - 30) * 20L);
+        }.runTaskLater(this, (config.SERVER_RESTART_SECONDS - config.SERVER_RESTART_ALERT_SECONDS) * 20L);
 
         new BukkitRunnable(){
             @Override
             public void run() {
-                // The Current System Automatically Restarts When The Server Stops
                 Bukkit.shutdown();
             }
         }.runTaskLater(this, config.SERVER_RESTART_SECONDS * 20L);
@@ -101,11 +102,11 @@ public final class Survival extends JavaPlugin implements Listener {
         getLogger().info("This Server Is Running " + getServer().getVersion());
     }
 
-    public ChatColor getColor(boolean bool){
+    public ChatColor convertBooleanToChatColor(boolean bool){
         return bool ? ChatColor.GREEN : ChatColor.RED;
     }
 
-    public String toString(boolean bool){
+    public String convertBooleanToString(boolean bool){
         return bool ? "ON" : "OFF";
     }
 

@@ -1,5 +1,6 @@
 package com.amirparsa.survival.listeners;
 
+import com.amirparsa.survival.Survival;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
@@ -36,7 +37,8 @@ public class DeathListener implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent e){
         if(e.getEntity().getKiller() == null) return;
-        e.setDeathMessage("");
+        if(!Survival.getInstance().config.CUSTOM_PVP_MESSAGES) return;
+        e.setDeathMessage(null);
         Bukkit.broadcastMessage(e.getEntity().getName() + " Was " + ChatColor.GOLD + deathMessages[random.nextInt(deathMessages.length)] + ChatColor.RESET + " By " + e.getEntity().getKiller().getName());
     }
 }

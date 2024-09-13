@@ -1,15 +1,15 @@
-package com.amirparsa.survival.commands;
+package com.amirparsa.survival.commands.storage;
 
-import com.amirparsa.survival.BaseCommand;
+import com.amirparsa.survival.commands.ConfigurableCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class EnchantCommand extends BaseCommand {
+public class CraftCommand extends ConfigurableCommand {
 
     public boolean handle(CommandSender commandSender, Command command, String s, String[] strings) {
         if(commandSender instanceof Player player){
-            player.openEnchanting(null, true);
+            player.openWorkbench(null, true);
         }
         return true;
     }
