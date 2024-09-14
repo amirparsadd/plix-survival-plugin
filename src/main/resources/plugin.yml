@@ -4,8 +4,8 @@ main: com.amirparsa.survival.Survival
 api-version: '1.16'
 commands:
   ping:
-    usage: /<command>
-    description: See Your Ping
+    usage: /<command> [name]
+    description: See Your Or Others Ping
   sharelocation:
     usage: /<command> PlayerName
     description: Share Your Location With The Specified Player
