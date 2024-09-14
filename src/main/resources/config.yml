@@ -13,6 +13,7 @@ custom-pvp-messages: true
 # Custom Util Features
 custom-motd: true
 verbose-welcome: true
+custom-joinleave-messages: true
 
 # Configurable Commands
 commands:

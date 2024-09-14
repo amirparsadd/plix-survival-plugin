@@ -19,6 +19,7 @@ public class Config {
     public boolean CUSTOM_PVP_MESSAGES;
     public boolean CUSTOM_MOTD;
     public boolean VERBOSE_WELCOME;
+    public boolean CUSTOM_JOINLEAVE_MESSAGE;
     public int SERVER_RESTART_ALERT_SECONDS;
 
     public HashMap<String, CommandData> COMMANDS = new HashMap<>();
@@ -34,6 +35,7 @@ public class Config {
         SERVER_DESC = config.getString("server-desc", "Unknown");
         CUSTOM_MOTD = config.getBoolean("custom-motd", true);
         VERBOSE_WELCOME = config.getBoolean("verbose-welcome", true);
+        CUSTOM_JOINLEAVE_MESSAGE = config.getBoolean("custom-joinleave-messages", true);
     }
 
     private void loadCommands(){

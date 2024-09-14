@@ -11,10 +11,11 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class JoinLeaveListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
-        e.setJoinMessage(e.getPlayer().getName() + ChatColor.AQUA + " Joined " + ChatColor.DARK_AQUA + Survival.getInstance().config.SERVER_NAME);
-        // Get Rid Of Any Older Messages Persisting From Other Servers
-        for(int i = 0; i < 20; i++){
-            e.getPlayer().sendMessage("   ");
+        if(Survival.getInstance().config.CUSTOM_JOINLEAVE_MESSAGE){
+            e.setJoinMessage(e.getPlayer().getName() + ChatColor.AQUA + " Joined " + ChatColor.DARK_AQUA + Survival.getInstance().config.SERVER_NAME);
+            for(int i = 0; i < 20; i++){
+                e.getPlayer().sendMessage("   "); // Get Rid Of Any Older Messages Persisting From Other Servers
+            }
         }
         if(Survival.getInstance().config.VERBOSE_WELCOME){
             e.getPlayer().sendMessage(ChatColor.GRAY + "Welcome To " + ChatColor.DARK_AQUA + Survival.getInstance().config.SERVER_NAME);
@@ -25,6 +26,8 @@ public class JoinLeaveListener implements Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e){
-        e.setQuitMessage(e.getPlayer().getName() + ChatColor.AQUA + " Left " + ChatColor.DARK_AQUA + Survival.getInstance().config.SERVER_NAME);
+        if(Survival.getInstance().config.CUSTOM_JOINLEAVE_MESSAGE) {
+            e.setQuitMessage(e.getPlayer().getName() + ChatColor.AQUA + " Left " + ChatColor.DARK_AQUA + Survival.getInstance().config.SERVER_NAME);
+        }
     }
 }
