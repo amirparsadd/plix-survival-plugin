@@ -18,6 +18,7 @@ public class Config {
     public String SERVER_DESC;
     public boolean CUSTOM_PVP_MESSAGES;
     public boolean CUSTOM_MOTD;
+    public boolean VERBOSE_WELCOME;
     public int SERVER_RESTART_ALERT_SECONDS;
 
     public HashMap<String, CommandData> COMMANDS = new HashMap<>();
@@ -32,6 +33,7 @@ public class Config {
         SERVER_RESTART_ALERT_SECONDS = config.getInt("restart-warn-delay", 30);
         SERVER_DESC = config.getString("server-desc", "Unknown");
         CUSTOM_MOTD = config.getBoolean("custom-motd", true);
+        VERBOSE_WELCOME = config.getBoolean("verbose-welcome", true);
     }
 
     private void loadCommands(){

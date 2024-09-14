@@ -12,6 +12,7 @@ custom-pvp-messages: true
 
 # Custom Util Features
 custom-motd: true
+verbose-welcome: true
 
 # Configurable Commands
 commands:
